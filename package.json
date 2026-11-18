@@ -1,0 +1,27 @@
+{
+  "name": "gh200-m06-custom-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomomax/GH200-M06-custom-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/nomomax/GH200-M06-custom-action/issues"
+  },
+  "homepage": "https://github.com/nomomax/GH200-M06-custom-action#readme",
+  "dependencies": {
+    "@actions/core": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.45.0"
+  }
+}
