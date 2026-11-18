@@ -1,0 +1,32 @@
+name: Wiki Action Workflow
+
+on:
+  issue_comment:
+    types: [created]
+
+# 關鍵安全設定：僅授予寫入 Issue 留言與讀取儲存庫內容的最小權限
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  wiki:
+    # 僅當 Issue 留言以 /wiki 開頭時才執行本作業
+    if: startsWith(github.event.comment.body, '/wiki')
+    runs-on: ubuntu-latest
+    steps:
+      - name: 簽出儲存庫代碼
+        uses: actions/checkout@v5
+
+      - name: 執行本地自訂 Action
+        id: get-wiki
+        uses: ./
+
+      - name: 自動回覆維基百科條目至 Issue 留言
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            📚 **每日隨機維基百科條目摘要**：
+
+            > ${{ steps.get-wiki.outputs.wiki }}
